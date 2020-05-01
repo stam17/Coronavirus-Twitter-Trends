@@ -7,11 +7,21 @@ from nltk.tokenize import word_tokenize
 import sys
 
 # Cleans csv files of actual twitter data: remove punctuation, stopwords (as defined by nltk), links
+# Command line input: (1) folder
 
-keyword = sys.argv[1]
-week = sys.argv[2]
-file_in = keyword + '/' + keyword + '_' + week + '.csv'
-file_out = keyword + '_' + week + '.txt'
+folder = sys.argv[1]
+print(folder)
+
+if folder == 'raw data':
+	print('raw')
+	keyword = sys.argv[2]
+	week = sys.argv[3]
+	file_in = keyword + '/' + keyword + '_' + week + '.csv'
+	file_out = keyword + '_' + week + '.txt'
+else:
+	month = sys.argv[2]
+	file_in = folder + '/' + month + '.csv'
+	file_out = month + '.txt'
 
 str = ''
     
@@ -29,5 +39,5 @@ filtered = [w.lower() for w in word_tokens if not w.lower() in stop_words and w.
 # return filtered list as string
 cleaned = (" ").join(filtered)
 
-with open(file_out, "w") as text_file:
-    text_file.write(cleaned)
+text_file = open(file_out, "w+")
+text_file.write(cleaned)
