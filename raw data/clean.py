@@ -24,7 +24,7 @@ for row in reader:
 stop_words = set(stopwords.words('english'))
 word_tokens = word_tokenize(str) 
   
-filtered = [w.lower() for w in word_tokens if not w in stop_words and w.isalpha()] 
+filtered = [w.lower() for w in word_tokens if not w.lower() in stop_words and w.isalpha()] 
             
 # return filtered list as string
 cleaned = (" ").join(filtered)
