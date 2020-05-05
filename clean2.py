@@ -18,7 +18,7 @@ if folder == 'raw_data':
 else:
 	month = sys.argv[2]
 	file_in = folder + '/' + month + '.csv'
-	file_out = month + '_cleaned.txt'
+	file_out = month + '.txt'
 
 lines = []
     
